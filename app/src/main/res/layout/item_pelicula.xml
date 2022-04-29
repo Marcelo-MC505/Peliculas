@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/TxtTitulo"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:text="The GodFather: 50 years"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/TxtId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:text="1"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/TxtNacionalidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="U.S.A"
+            />
+        <TextView
+            android:id="@+id/TxtClasificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Mafia, Accion, Drama"
+            />
+        <TextView
+            android:id="@+id/TxtDuracion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="3 horas"
+            />
+        <TextView
+            android:id="@+id/TxtTipoMetraje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Largo metraje"
+            />
+        <TextView
+            android:id="@+id/TxtSinopsis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="La mafia italiana representada por grandes actores"
+            />
+    </LinearLayout>
+</LinearLayout>

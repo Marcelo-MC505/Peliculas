@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.peliculas.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/irAClasificacion"
+            app:destination="@id/clasificacionFragment" />
+        <action
+            android:id="@+id/irAGenero"
+            app:destination="@id/generoFragment" />
+        <action
+            android:id="@+id/irAIdioma"
+            app:destination="@id/idiomaFragment" />
+        <action
+            android:id="@+id/irANacionalidad"
+            app:destination="@id/nacionalidadFragment" />
+        <action
+            android:id="@+id/irAPelicula"
+            app:destination="@id/peliculaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clasificacionFragment"
+        android:name="com.example.peliculas.clasificacionFragment"
+        android:label="fragment_clasificacion"
+        tools:layout="@layout/fragment_clasificacion" />
+    <fragment
+        android:id="@+id/generoFragment"
+        android:name="com.example.peliculas.generoFragment"
+        android:label="fragment_genero"
+        tools:layout="@layout/fragment_genero" />
+    <fragment
+        android:id="@+id/idiomaFragment"
+        android:name="com.example.peliculas.fragments.IdiomaFragment"
+        android:label="fragment_item_idioma"
+        tools:layout="@layout/fragment_idioma" />
+        <action
+            android:id="@+id/agregar_idioma"
+            app:destination="@id/agregarIdiomaFragment" />
+        <action
+            android:id="@+id/editar_idioma"
+            app:destination="@id/editarIdiomaFragment" />
+    <fragment
+        android:id="@+id/nacionalidadFragment"
+        android:name="com.example.peliculas.fragments.nacionalidadFragment"
+        android:label="fragment_nacionalidad"
+        tools:layout="@layout/fragment_nacionalidad" />
+        <action
+            android:id="@+id/agregar_nacionalidad"
+            app:destination="@id/AgregarNacionalidadFragment" />
+        <action
+            android:id="@+id/editar_nacionalidad"
+            app:destination="@id/editarNacionalidadFragment" />
+    <fragment
+        android:id="@+id/peliculaFragment"
+        android:name="com.example.peliculas.peliculaFragment"
+        android:label="fragment_pelicula"
+        tools:layout="@layout/fragment_pelicula" />
+    <fragment
+        android:id="@+id/AgregarNacionalidadFragment"
+        android:name="com.example.peliculas.fragments.agregar.AgregarNacionalidadFragment"
+        android:label="fragment_agregar_genero"
+        tools:layout="@layout/fragment_agregar_nacionalidad" >
+        <action
+            android:id="@+id/volver_a_lista"
+            app:destination="@id/nacionalidadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarIdiomaFragment"
+        android:name="com.example.peliculas.fragments.agregar.AgregarIdiomaFragment"
+        android:label="AgregarIdiomaFragment" />
+        <action
+            android:id="@+id/volver_a_listaidioma"
+            app:destination="@id/idiomaFragment" />
+
+    <fragment
+        android:id="@+id/editarIdiomaFragment"
+        android:name="com.example.peliculas.fragments.editar.EditarIdiomaFragment"
+        android:label="EditarIdiomaFragment" />
+        <action
+            android:id="@+id/volver_listaIdioma"
+            app:destination="@id/idiomaFragment" />
+        <argument
+            android:name="currentIdioma"
+            app:argType="com.example.peliculas.models.Idioma" />
+    <fragment
+        android:id="@+id/editarNacionalidadFragment"
+        android:name="com.example.peliculas.fragments.editar.EditarNacionalidadFragment"
+        android:label="EditarNacionalidadFragment" />
+        <action
+            android:id="@+id/volver_listaNacionalidad"
+            app:destination="@id/nacionalidadFragment" />
+        <argument
+            android:name="currentNacionalidad"
+            app:argType="com.example.peliculas.models.Nacionalidad" />
+</navigation>
