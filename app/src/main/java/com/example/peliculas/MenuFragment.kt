@@ -29,7 +29,7 @@ class MenuFragment : Fragment() {
             }
 
             BtnIdioma.setOnClickListener {
-                findNavController().navigate(R.id.idiomaFragment)
+                findNavController().navigate(R.id.irAIdioma)
             }
             BtnGenero.setOnClickListener {
                 findNavController().navigate(R.id.generoFragment)

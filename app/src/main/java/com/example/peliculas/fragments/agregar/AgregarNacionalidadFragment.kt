@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import com.example.peliculas.dao.Nacionalidad_dao
 import com.example.peliculas.databinding.FragmentAgregarNacionalidadBinding
 import com.example.peliculas.db.dbNacionalidad
-import com.example.peliculas.models.Nacionalidad
+import com.example.peliculas.models.entities.Nacionalidad
 
 class AgregarNacionalidadFragment : Fragment() {
 
@@ -31,13 +31,13 @@ class AgregarNacionalidadFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = Navigation.findNavController(view)
-        val db: dbNacionalidad = dbNacionalidad.getInstace(this.requireContext().applicationContext)
+        val db: dbNacionalidad = dbNacionalidad.getNacionalidadBD(this.requireContext().applicationContext)
         val dao: Nacionalidad_dao = db.nacionalidadDao()
 
         with(binding){
             btnAgregarnacionalidad.setOnClickListener {
 
-                val id = Nacionalidad(0,txtNacionalidad.text.toString(), true)
+                val id = Nacionalidad(0,txtNacionalidad.text.toString())
 
                 CoroutineScope(Dispatchers.Main).launch {
                     dao.insertNacionalidad(id)

@@ -1,4 +1,4 @@
-package com.example.peliculas.models
+package com.example.peliculas.models.entities
 
 data class Nacionalidad_Item (
     val idNacionalidad: Int,

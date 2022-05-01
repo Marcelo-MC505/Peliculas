@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.peliculas.dao.Nacionalidad_dao
-import com.example.peliculas.models.Nacionalidad
+import com.example.peliculas.models.entities.Nacionalidad
 
 
 interface MainDataBaseProviderNacionalidad {
@@ -13,7 +13,7 @@ interface MainDataBaseProviderNacionalidad {
 }
 
 @Database(entities = [Nacionalidad::class,],
-    version = 4
+    version = 1
 )
 abstract class dbNacionalidad: RoomDatabase(), MainDataBaseProviderNacionalidad {
     abstract override fun nacionalidadDao(): Nacionalidad_dao
@@ -21,7 +21,7 @@ abstract class dbNacionalidad: RoomDatabase(), MainDataBaseProviderNacionalidad 
     companion object{
         @Volatile
         private var INSTANCE: dbNacionalidad? = null
-        fun getInstace(context: Context): dbNacionalidad {
+        fun getNacionalidadBD(context: Context): dbNacionalidad {
             synchronized(this){
                 var instance = INSTANCE
                 if (instance == null){

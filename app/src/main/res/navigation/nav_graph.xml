@@ -38,7 +38,7 @@
         tools:layout="@layout/fragment_genero" />
     <fragment
         android:id="@+id/idiomaFragment"
-        android:name="com.example.peliculas.fragments.IdiomaFragment"
+        android:name="com.example.peliculas.adapters.IdiomaFragment"
         android:label="fragment_item_idioma"
         tools:layout="@layout/fragment_idioma" />
         <action
@@ -49,7 +49,7 @@
             app:destination="@id/editarIdiomaFragment" />
     <fragment
         android:id="@+id/nacionalidadFragment"
-        android:name="com.example.peliculas.fragments.nacionalidadFragment"
+        android:name="com.example.peliculas.adapters.NacionalidadFragment"
         android:label="fragment_nacionalidad"
         tools:layout="@layout/fragment_nacionalidad" />
         <action
@@ -83,21 +83,23 @@
     <fragment
         android:id="@+id/editarIdiomaFragment"
         android:name="com.example.peliculas.fragments.editar.EditarIdiomaFragment"
-        android:label="EditarIdiomaFragment" />
-        <action
-            android:id="@+id/volver_listaIdioma"
-            app:destination="@id/idiomaFragment" />
+        android:label="EditarIdiomaFragment" >
         <argument
             android:name="currentIdioma"
-            app:argType="com.example.peliculas.models.Idioma" />
+            app:argType="com.example.peliculas.models.entities.Idioma" />
+    </fragment>
+        <action
+            android:id="@+id/volver_listaIdioma_updated"
+            app:destination="@id/idiomaFragment" />
     <fragment
         android:id="@+id/editarNacionalidadFragment"
         android:name="com.example.peliculas.fragments.editar.EditarNacionalidadFragment"
-        android:label="EditarNacionalidadFragment" />
-        <action
-            android:id="@+id/volver_listaNacionalidad"
-            app:destination="@id/nacionalidadFragment" />
+        android:label="EditarNacionalidadFragment" >
         <argument
             android:name="currentNacionalidad"
-            app:argType="com.example.peliculas.models.Nacionalidad" />
+            app:argType="com.example.peliculas.models.entities.Nacionalidad" />
+    </fragment>
+        <action
+            android:id="@+id/volver_listaNacionalidad_updated"
+            app:destination="@id/nacionalidadFragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.peliculas.models
+package com.example.peliculas.models.entities
 
 class Idioma_Item (
     val idIdioma: Int,

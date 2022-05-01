@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import com.example.peliculas.dao.Idioma_dao
 import com.example.peliculas.databinding.FragmentAgregarIdiomaBinding
 import com.example.peliculas.db.dbIdioma
-import com.example.peliculas.models.Idioma
+import com.example.peliculas.models.entities.Idioma
 
 class AgregarIdiomaFragment : Fragment() {
 
@@ -31,13 +31,13 @@ class AgregarIdiomaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = Navigation.findNavController(view)
-        val db: dbIdioma = dbIdioma.getInstace(this.requireContext().applicationContext)
+        val db: dbIdioma = dbIdioma.getIdiomaBD(this.requireContext().applicationContext)
         val dao: Idioma_dao = db.idiomaDao()
 
         with(binding){
             btnagregarIdioma.setOnClickListener {
 
-                val id = Idioma(0,txtIdioma.text.toString(), true)
+                val id = Idioma(0,txtIdioma.text.toString())
 
                 CoroutineScope(Dispatchers.Main).launch {
                     dao.insertIdioma(id)

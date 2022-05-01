@@ -1,16 +1,16 @@
-package com.example.peliculas.models
+package com.example.peliculas.models.entities
 
 import androidx.room.Embedded
-import androidx.room.Entity
 import androidx.room.Junction
 import androidx.room.Relation
 
-data class Pelicula_Genero(
+data class Pelicula_Idioma(
     @Embedded val pelicula: Pelicula,
     @Relation(
         parentColumn = "id_Pelicula",
         entityColumn = "id_Idioma",
-        associateBy = Junction(PG::class)
+        associateBy = Junction(PI::class)
     )
-    val genero:List<Genero>
+    val idioma:List<Idioma>
 )
+

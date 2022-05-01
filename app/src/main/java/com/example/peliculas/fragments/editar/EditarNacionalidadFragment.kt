@@ -1,60 +1,63 @@
 package com.example.peliculas.fragments.editar
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.peliculas.R
+import com.example.peliculas.databinding.FragmentEditarNacionalidadBinding
+import com.example.peliculas.models.entities.Nacionalidad
+import com.example.peliculas.models.viewmodels.NacionalidadViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EditarNacionalidadFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EditarNacionalidadFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var fBinding: FragmentEditarNacionalidadBinding
+    private val args by navArgs<EditarNacionalidadFragmentArgs>()
+    private lateinit var viewModel: NacionalidadViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_editar_nacionalidad, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EditarNacionalidadFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditarNacionalidadFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
+        fBinding = FragmentEditarNacionalidadBinding.inflate(layoutInflater)
+        viewModel = ViewModelProvider(this).get(NacionalidadViewModel::class.java)
+        with(fBinding) { txtNacionalidad.setText(args.currentNacionalidad.nombreN)
+            btnAgregarnacionalidad.setOnClickListener() {
+                GuardarCambios()
             }
+        }
+        setHasOptionsMenu(true)
+        return fBinding.root
+    }
+
+    private fun GuardarCambios() {
+        val nacionalidad = fBinding.txtNacionalidad.text.toString()
+        val pais = Nacionalidad(args.currentNacionalidad.id_Nacionalidad, nacionalidad)
+        viewModel.actualizarNacionalidad(pais)
+        Toast.makeText(requireContext(), "Registro actualizado", Toast.LENGTH_LONG).show()
+        findNavController().navigate(R.id.volver_listaNacionalidad_updated)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.mnuEliminar) {
+            eliminarNacionalidad()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    private fun eliminarNacionalidad() {
+        val alerta = AlertDialog.Builder(requireContext())
+        alerta.setPositiveButton("Si") { _, _ -> viewModel.eliminarNacionalidad(args.currentNacionalidad)
+            Toast.makeText( requireContext(), "Registro eliminado satisfactoriamente...", Toast.LENGTH_LONG ).show()
+            findNavController().navigate(R.id.volver_listaNacionalidad_updated)
+        }
+        alerta.setNegativeButton("No") { _, _ -> Toast.makeText( requireContext(), "Operación cancelada...", Toast.LENGTH_LONG ).show()
+        }
+        alerta.setTitle("Eliminando ${args.currentNacionalidad.nombreN}")
+        alerta.setMessage("¿Esta seguro de eliminar a ${args.currentNacionalidad.nombreN}?")
+        alerta.create().show()
     }
 }

@@ -1,4 +1,4 @@
-package com.example.peliculas.models
+package com.example.peliculas.models.entities
 
 data class Clasificacion_Item (
     val idClasificacion: Int,

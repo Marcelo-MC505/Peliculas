@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.peliculas.databinding.ItemPeliculaBinding
-import com.example.peliculas.models.Pelicula_Item
+import com.example.peliculas.models.entities.Pelicula_Item
 
 class Pelicula_Adapter(val pelicula_list: List<Pelicula_Item>): RecyclerView.Adapter<Pelicula_Adapter.PeliculaHolder>() {
     inner class PeliculaHolder(val binding: ItemPeliculaBinding): RecyclerView.ViewHolder(binding.root){

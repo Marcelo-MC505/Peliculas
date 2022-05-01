@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.peliculas.databinding.ItemClasificacionBinding
-import com.example.peliculas.models.Clasificacion_Item
+import com.example.peliculas.models.entities.Clasificacion_Item
 
 class Clasificacion_Adapter(val clasificacion_list: List<Clasificacion_Item>): RecyclerView.Adapter<Clasificacion_Adapter.ClasificacionHolder>() {
     inner class ClasificacionHolder(val binding: ItemClasificacionBinding): RecyclerView.ViewHolder(binding.root){

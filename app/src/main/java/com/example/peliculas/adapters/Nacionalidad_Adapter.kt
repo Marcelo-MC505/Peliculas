@@ -1,34 +1,44 @@
 package com.example.peliculas.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.peliculas.R
-import com.example.peliculas.models.*
+import com.example.peliculas.models.entities.Nacionalidad
+import com.example.peliculas.databinding.ListaNacionalidadBinding
 
-class Nacionalidad_Adapter(val compra:List<Nacionalidad>):RecyclerView.Adapter<Nacionalidad_Adapter.NacionalidadHolder>()  {
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): NacionalidadHolder {
-        var view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_list, null, false)
-        return NacionalidadHolder(view)
+class Nacionalidad_Adapter : RecyclerView.Adapter<Nacionalidad_Adapter.NacionalidadHolder>() {
+
+    private var listadoNacionalidad = emptyList<Nacionalidad>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NacionalidadHolder {
+        val binding = ListaNacionalidadBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return NacionalidadHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NacionalidadHolder, position: Int) {
-        val current =compra[position]
-        holder.tvTitulo.text = current.nombre
-        holder.tvSubtitulo.text ="ID = ${ current.id_Nacionalidad.toString()}"
+        holder.bind( listadoNacionalidad[position] )
     }
 
-    override fun getItemCount(): Int = compra.size
+    override fun getItemCount(): Int = listadoNacionalidad.size
 
-    class NacionalidadHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvTitulo: TextView = itemView.findViewById(R.id.item_title)
-        val tvSubtitulo: TextView = itemView.findViewById(R.id.item_sub)
-
+    fun setData(nations: List<Nacionalidad>) {
+        this.listadoNacionalidad = nations
+        notifyDataSetChanged()
     }
 
+    inner class NacionalidadHolder(val binding: ListaNacionalidadBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(nacionalidad: Nacionalidad) {
+            with(binding)
+            {
+                TvIdNacionalidad.text = nacionalidad.id_Nacionalidad.toString()
+                TvNacionalidad.text = nacionalidad.nombreN
+
+                ClFilaN.setOnClickListener {
+                    val action = NacionalidadFragmentDirections.editarNacionalidad(nacionalidad)
+                    it.findNavController().navigate(action)
+                }
+            }
+        }
+    }
 }

@@ -20,9 +20,12 @@
         <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/layout/item_clasificacion.xml" value="0.1" />
         <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/layout/item_genero.xml" value="0.1" />
         <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/layout/item_idioma.xml" value="0.1" />
-        <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/layout/item_list.xml" value="0.1" />
+        <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/layout/item_list.xml" value="0.18" />
         <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/layout/item_nacionalidad.xml" value="0.1" />
         <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/layout/item_pelicula.xml" value="0.1" />
+        <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/layout/lista_idioma.xml" value="0.1693840579710145" />
+        <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/layout/lista_nacionalidad.xml" value="0.1693840579710145" />
+        <entry key="..\:/Users/ESAGRI/AndroidStudioProjects/Peliculas/app/src/main/res/menu/delete_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
